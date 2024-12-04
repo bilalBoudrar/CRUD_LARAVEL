@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\ClubModel;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -20,7 +20,8 @@ class EleveModelFactory extends Factory
         return [
             'nom' => fake()->name(),
             'prenom' => fake()->name(),
-            'id_club' => ClubModel::inRandomOrder()->first()->id,
+            'email' => fake()->email(),
+            'password' => Hash::make('password'),
         ];
     }
 }

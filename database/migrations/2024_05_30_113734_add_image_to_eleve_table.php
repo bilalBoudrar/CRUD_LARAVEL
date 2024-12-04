@@ -12,8 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('eleve_models', function (Blueprint $table) {
-            $table->string('email');
-            $table->string('password');
+            $table->string('image')->nullable();
         });
     }
 
@@ -23,8 +22,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('eleve_models', function (Blueprint $table) {
-            $table->dropColumn('email');
-            $table->dropColumn('password');
+            $table->dropColumn('image');
         });
     }
 };

@@ -12,8 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('eleve_models', function (Blueprint $table) {
-            $table->unsignedBigInteger('id_club');
-            $table->foreign('id_club')->references('id')->on('club_models');
+            $table->softDeletes();
         });
     }
 
@@ -23,7 +22,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('eleve_models', function (Blueprint $table) {
-            //
+            $table->dropSoftDeletes();
         });
     }
 };

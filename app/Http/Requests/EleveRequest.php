@@ -24,8 +24,9 @@ class EleveRequest extends FormRequest
         return [
             'nom' => 'required|between:5,10',
             'prenom' => 'required',
-            'email' => 'required|email|unique:eleve_models',
+            'email' => 'required|email',
             'password' => 'required|confirmed',
+            'image' => 'image|mimes:jpg,png,jpeg'
         ];
     }
 }

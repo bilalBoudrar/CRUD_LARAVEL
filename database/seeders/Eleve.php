@@ -14,5 +14,9 @@ class Eleve extends Seeder
     public function run(): void
     {
         EleveModel::factory(10)->create();
+
+        EleveModel::factory()->create([
+            
+        ]);
     }
 }

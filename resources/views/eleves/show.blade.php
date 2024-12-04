@@ -4,38 +4,91 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Détail de l'Élève</title>
+    <!-- Assuming Bootstrap is already included in your system -->
+    <link href="/path/to/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+        /* Custom styles for card and container */
+        .card {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-title {
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .card-text {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .content {
+            min-height: 80vh; /* Take most of the screen space */
+            padding-bottom: 50px; /* Space for footer */
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        .card-img-top {
+            border-radius: 10px;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #f8f9fa;
+            padding: 20px 0;
+            text-align: center;
+            margin-top: auto; /* This pushes the footer to the bottom */
+            border-top: 1px solid #ddd;
+            width: 100%;
+            position: relative;
+            bottom: 0;
+        }
+
+        footer p {
+            margin: 0;
+            color: #6c757d;
+        }
+    </style>
 </head>
-<body>
+<body class="d-flex flex-column" style="height: 100vh;">
+
     @include('Partials.nav')
-    <h1>Gestion des élèves</h1>
-    <div class="container">
-        <strong>ID élève</strong> : {{ $eleve->id}}  <br><br>
-        <strong>Nom</strong> : {{ $eleve->nom}} <br><br>
-        <strong>Prénom</strong> : {{ $eleve->prenom}} <br><br>
-        <strong>ID club</strong> : {{ $eleve->id_club }} <br><br>
-        
-        <h1 class="text-center">Liste d'activité auxquelles l'élève a participé</h1>
-        <table>
-            <tr>
-                <th>Id activité</th>
-                <th>Description</th>
-                <th>Date Début</th>
-                <th>Nombre de Jours</th>
-            </tr>
-            @foreach($activites as $activite)
-            
-            <tr>
-                <td>{{$activite->id}}</td>
-                <td>{{$activite->description}}</td>
-                <td>{{$activite->dateDebut}}</td>
-                <td>{{$activite->nombreJours}}</td>
-            </tr>
-            
-            @endforeach
-        </table>
-        <p>Nombre total des jours : {{ $totalJours }}</p>
+
+    <div class="container content">
+        <h2>Détails de l'Élève</h2>
+
+        <div class="d-flex justify-content-center align-items-center">
+            <div class="card" style="width: 18rem;">
+                <!-- Displaying the student image -->
+                <img src="{{ asset('storage/'.$eleve->image)}}" class="card-img-top" alt="Élève Image">
+                
+                <div class="card-body">
+                    <!-- Displaying student name, surname, and email -->
+                    <h5 class="card-title">#{{ $eleve->id}} {{ $eleve->nom}}</h5>
+                    <p class="card-text"><strong>Prénom:</strong> {{ $eleve->prenom }}</p>
+                    <p class="card-text"><strong>Email:</strong> {{ $eleve->email }}</p>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <!-- Include the Footer Section -->
+    @include('Partials.footer')
+
 </body>
 </html>
